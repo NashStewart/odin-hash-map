@@ -40,6 +40,7 @@ value is overwritten or we can say that we update the key’s value (e.g.
 `Carlos` is our key but it is called twice: once with value `I am the old 
 value.`, and once with value `I am the new value.`. From the logic stated 
 above, `Carlos` should contain only the latter value).
+
 In the meantime, a collision is when TWO DIFFERENT keys sit inside the 
 same bucket, because they generate the same hash code (e.g. `Carlos` 
 and `Carla` are both hashed to `3`, so `3` becomes a location for `Carlos` 
