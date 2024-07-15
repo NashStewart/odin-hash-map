@@ -12,5 +12,10 @@ hash_map.set('Paul', 5)
 hash_map.set('Francis', 6)
 hash_map.set('Jim', 7)
 hash_map.set('Carlos', 8)
+hash_map.set('Stephanie', 9)
+hash_map.set('Thomas', 10)
+hash_map.set('Frank', 11)
+hash_map.set('Jake', 12)
+hash_map.set('Mia', 13)
 
-p hash_map.entries
+puts hash_map
