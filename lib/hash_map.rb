@@ -66,6 +66,18 @@ class HashMap
     @length = 0
   end
 
+  def keys
+    entries.each_with_object([]) do |entry, array|
+      unless entry.nil?
+        if entry.is_a? LinkedList
+          array.concat entry.keys
+        else
+          array << entry.first
+        end
+      end
+    end
+  end
+
   def to_s
     string = ''
     entries.each_with_index { |entry, index| string += "#{index}: #{entry}\n" }

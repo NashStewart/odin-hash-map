@@ -97,6 +97,12 @@ class LinkedList
     end
   end
 
+  def keys
+    keys_array = []
+    each { |node| keys_array << node.key }
+    keys_array
+  end
+
   def to_s
     string = ''
     each { |node| string += "( \"#{node.key}\": #{node.value} ) -> " }

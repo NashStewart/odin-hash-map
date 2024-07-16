@@ -44,6 +44,9 @@ puts "Entry NOT found . . . . 'Susan': #{hash_map.remove 'Susan'}"
 puts "#length(): #{hash_map.length}"
 puts hash_map
 
+puts "\n#keys()"
+puts hash_map.keys
+
 puts "\n#clear():"
 hash_map.clear
 puts "#length(): #{hash_map.length}"
