@@ -37,7 +37,14 @@ puts "Entry in LinkedList . . . 'Frank': #{hash_map.has? 'Frank'}"
 puts "Entry NOT found . . . . . 'Robert': #{hash_map.has? 'Robert'}"
 
 puts "\n#remove(key):"
+puts "#length(): #{hash_map.length}"
 puts "Entry found . . . . . . 'Mary': #{hash_map.remove 'Mary'}"
 puts "Entry in LinkedList . . 'Stephanie': #{hash_map.remove 'Stephanie'}"
 puts "Entry NOT found . . . . 'Susan': #{hash_map.remove 'Susan'}"
+puts "#length(): #{hash_map.length}"
+puts hash_map
+
+puts "\n#clear():"
+hash_map.clear
+puts "#length(): #{hash_map.length}"
 puts hash_map

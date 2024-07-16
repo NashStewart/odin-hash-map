@@ -4,31 +4,31 @@ require_relative 'linked_list'
 
 # Collection of key, value pairs where the keys are converted to hash codes for entry and retrieval.
 class HashMap
-  attr_reader :entries
+  attr_reader :entries, :length
 
   def initialize
     @entries = Array.new 16
+    @length = 0
     @load_factor = 0.75
   end
 
   def set(key, value)
-    hash_code = hash(key)
-    bucket = entries[hash_code]
+    bucket = entries[hash key]
 
     if bucket.nil?
-      @entries[hash_code] = [key, value]
+      @entries[hash key] = [key, value]
     elsif bucket.is_a? LinkedList
       bucket.append key, value
     else
-      @entries[hash_code] = new_list(hash_code, key, value)
+      @entries[hash key] = new_list(key, value)
     end
 
+    @length += 1
     [key, value]
   end
 
   def get(key)
-    hash_code = hash(key)
-    entry = entries[hash_code]
+    entry = entries[hash key]
 
     return nil if entry.nil?
     return entry.contains?(key) ? entry.value_by_key(key) : nil if entry.is_a?(LinkedList)
@@ -47,16 +47,23 @@ class HashMap
     return nil unless has? key
 
     value = get key
-    hash_code = hash(key)
-    bucket = entries[hash_code]
+    bucket = entries[hash key]
 
     if bucket.is_a? LinkedList
       bucket.remove_by_key key
     else
-      @entries[hash_code] = nil
+      @entries[hash key] = nil
     end
 
+    @length -= 1
     value
+  end
+
+  def clear
+    size = entries.size
+    entries.clear
+    @entries = Array.new size
+    @length = 0
   end
 
   def to_s
@@ -74,9 +81,9 @@ class HashMap
     hash_code % entries.size
   end
 
-  def new_list(hash_code, key, value)
+  def new_list(key, value)
     list = LinkedList.new
-    current_entry = entries[hash_code]
+    current_entry = entries[hash key]
     list.append current_entry.first, current_entry.last
     list.append key, value
     list
