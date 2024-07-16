@@ -4,6 +4,7 @@ require_relative 'lib/hash_map'
 
 hash_map = HashMap.new
 
+puts 'set():'
 hash_map.set('Bob', 1)
 hash_map.set('Mary', 2)
 hash_map.set('Tom', 3)
@@ -19,3 +20,22 @@ hash_map.set('Jake', 12)
 hash_map.set('Mia', 13)
 
 puts hash_map
+
+puts "\nget():"
+puts "Entry found . . . . . . get('Mary'): #{hash_map.get('Mary')}"
+puts "Entry in LinkedList . . get('Thomas'): #{hash_map.get('Thomas')}"
+puts "Entry NOT found . . . . get('Susan'): #{hash_map.get('Susan')}"
+puts "\nget() all entries:"
+p hash_map.get('Bob')
+p hash_map.get('Mary')
+p hash_map.get('Tom')
+p hash_map.get('Jerry')
+p hash_map.get('Paul')
+p hash_map.get('Francis')
+p hash_map.get('Jim')
+p hash_map.get('Carlos')
+p hash_map.get('Stephanie')
+p hash_map.get('Thomas')
+p hash_map.get('Frank')
+p hash_map.get('Jake')
+p hash_map.get('Mia')

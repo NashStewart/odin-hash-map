@@ -10,21 +10,20 @@ class LinkedList
     @size = 0
   end
 
-  def append(value)
-    new_node = Node.new value
+  def value_by_key(key)
+    index = find key
+    node = at index
+    node.value
+  end
+
+  def append(key, value)
+    new_node = Node.new key, value
     if head
       tail.next_node = new_node
     else
       @head = new_node
     end
     @tail = new_node
-    @size += 1
-    new_node
-  end
-
-  def prepend(value)
-    new_node = Node.new value, head
-    @head = new_node
     @size += 1
     new_node
   end
@@ -39,52 +38,16 @@ class LinkedList
     node
   end
 
-  def pop
-    last = tail
-    second_to_last = at(size - 2)
-    second_to_last.delete_next
-    @size -= 1
-    @tail = second_to_last
-    last
-  end
-
-  def contains?(value)
-    each { |node| return true if node.value == value }
+  def contains?(key)
+    each { |node| return true if node.key == key }
     false
   end
 
-  def find(value)
+  def find(key)
     each_with_index do |node, index|
-      return index if node.value == value
+      return index if node.key == key
     end
     nil
-  end
-
-  def to_s
-    string = ''
-    each { |node| string += "( #{node.value} ) -> " }
-    string += 'nil'
-    string
-  end
-
-  def insert_at(value, index)
-    return nil unless index_in_bounds? index
-    return prepend(value) if index.zero?
-    return append(value) if index == size
-
-    previous_node = at index - 1
-    current_node = previous_node.next_node
-    new_node = Node.new value, current_node
-    previous_node.next_node = new_node
-    @size += 1
-    new_node
-  end
-
-  def shift
-    node_to_remove = head
-    @head = node_to_remove.next_node
-    @size -= 1
-    node_to_remove
   end
 
   def remove_at(index)
@@ -111,6 +74,13 @@ class LinkedList
       yield node, index
       node = node.next_node
     end
+  end
+
+  def to_s
+    string = ''
+    each { |node| string += "( \"#{node.key}\": #{node.value} ) -> " }
+    string += 'nil'
+    string
   end
 
   private
