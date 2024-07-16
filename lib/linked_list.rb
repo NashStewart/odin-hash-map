@@ -28,6 +28,22 @@ class LinkedList
     new_node
   end
 
+  def pop
+    last = tail
+    second_to_last = at(size - 2)
+    second_to_last.delete_next
+    @size -= 1
+    @tail = second_to_last
+    last
+  end
+
+  def shift
+    node_to_remove = head
+    @head = node_to_remove.next_node
+    @size -= 1
+    node_to_remove
+  end
+
   def at(index)
     return nil unless index_in_bounds? index
 
@@ -62,6 +78,11 @@ class LinkedList
     previous_node.next_node = next_node
     @size -= 1
     node_to_remove
+  end
+
+  def remove_by_key(key)
+    index = find key
+    remove_at index
   end
 
   def each

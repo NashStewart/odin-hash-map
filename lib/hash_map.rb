@@ -37,6 +37,28 @@ class HashMap
     nil
   end
 
+  def has?(key)
+    return true unless get(key).nil?
+
+    false
+  end
+
+  def remove(key)
+    return nil unless has? key
+
+    value = get key
+    hash_code = hash(key)
+    bucket = entries[hash_code]
+
+    if bucket.is_a? LinkedList
+      bucket.remove_by_key key
+    else
+      @entries[hash_code] = nil
+    end
+
+    value
+  end
+
   def to_s
     string = ''
     entries.each_with_index { |entry, index| string += "#{index}: #{entry}\n" }
