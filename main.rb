@@ -28,8 +28,6 @@ puts "\n#get(key):"
 puts "Entry found . . . . . . 'Mary': #{hash_map.get 'Mary'}"
 puts "Entry in LinkedList . . 'Thomas': #{hash_map.get 'Thomas'}"
 puts "Entry NOT found . . . . 'Susan': #{hash_map.get 'Susan'}"
-puts 'All entries:'
-names.each { |name| p hash_map.get name }
 
 puts "\n#has?(key)"
 puts "Entry found . . . . . . . 'Carlos': #{hash_map.has? 'Carlos'}"
@@ -45,7 +43,10 @@ puts "#length(): #{hash_map.length}"
 puts hash_map
 
 puts "\n#keys()"
-puts hash_map.keys
+p hash_map.keys
+
+puts "\n#values()"
+p hash_map.values
 
 puts "\n#clear():"
 hash_map.clear

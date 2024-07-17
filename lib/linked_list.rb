@@ -98,9 +98,15 @@ class LinkedList
   end
 
   def keys
-    keys_array = []
-    each { |node| keys_array << node.key }
-    keys_array
+    array = []
+    each { |node| array << node.key }
+    array
+  end
+
+  def values
+    array = []
+    each { |node| array << node.value }
+    array
   end
 
   def to_s

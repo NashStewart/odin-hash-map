@@ -68,12 +68,24 @@ class HashMap
 
   def keys
     entries.each_with_object([]) do |entry, array|
-      unless entry.nil?
-        if entry.is_a? LinkedList
-          array.concat entry.keys
-        else
-          array << entry.first
-        end
+      next if entry.nil?
+
+      if entry.is_a? LinkedList
+        array.concat entry.keys
+      else
+        array << entry.first
+      end
+    end
+  end
+
+  def values
+    entries.each_with_object([]) do |entry, array|
+      next if entry.nil?
+
+      if entry.is_a? LinkedList
+        array.concat entry.values
+      else
+        array << entry.last
       end
     end
   end
