@@ -97,20 +97,6 @@ class LinkedList
     end
   end
 
-  def keys
-    key_value_pairs.map(&:first)
-  end
-
-  def values
-    key_value_pairs.map(&:last)
-  end
-
-  def key_value_pairs
-    array = []
-    each { |node| array << [node.key, node.value] }
-    array
-  end
-
   def to_s
     string = ''
     each { |node| string += "( \"#{node.key}\": #{node.value} ) -> " }

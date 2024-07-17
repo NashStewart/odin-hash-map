@@ -16,8 +16,6 @@ names = %w[
   Stephanie
   Thomas
   Frank
-  Jake
-  Mia
 ]
 
 puts '#set(key, value):'
@@ -51,7 +49,13 @@ p hash_map.values
 puts "\n#entries()"
 p hash_map.entries
 
+puts "\n#grow HashMap with set():"
+hash_map.set('Jake', 12)
+hash_map.set('Mia', 13)
+hash_map.set('Shane', 14)
+puts hash_map
+
 puts "\n#clear():"
 hash_map.clear
 puts "#length(): #{hash_map.length}"
-puts hash_map
+p hash_map.entries
