@@ -48,6 +48,9 @@ p hash_map.keys
 puts "\n#values()"
 p hash_map.values
 
+puts "\n#entries()"
+p hash_map.entries
+
 puts "\n#clear():"
 hash_map.clear
 puts "#length(): #{hash_map.length}"

@@ -98,14 +98,16 @@ class LinkedList
   end
 
   def keys
-    array = []
-    each { |node| array << node.key }
-    array
+    key_value_pairs.map(&:first)
   end
 
   def values
+    key_value_pairs.map(&:last)
+  end
+
+  def key_value_pairs
     array = []
-    each { |node| array << node.value }
+    each { |node| array << [node.key, node.value] }
     array
   end
 
