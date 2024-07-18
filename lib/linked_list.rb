@@ -85,6 +85,12 @@ class LinkedList
     remove_at index
   end
 
+  def update_value(key, value)
+    index = find key
+    node = at index
+    node.value = value
+  end
+
   def each
     each_with_index { |node, _| yield node }
   end

@@ -53,6 +53,7 @@ puts "\n#grow HashMap with set():"
 hash_map.set('Jake', 12)
 hash_map.set('Mia', 13)
 hash_map.set('Shane', 14)
+hash_map.set('Joe', 15)
 puts hash_map
 
 puts "\n#clear():"

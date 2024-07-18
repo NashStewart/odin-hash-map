@@ -2,7 +2,8 @@
 
 # A key, value pair and reference pointer to the next Node in a LinkedList.
 class Node
-  attr_reader :key, :value, :next_node
+  attr_accessor :value
+  attr_reader :key, :next_node
 
   def initialize(key = nil, value = nil, next_node = nil)
     @key = key

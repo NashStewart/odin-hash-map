@@ -13,9 +13,12 @@ class HashMap
   end
 
   def set(key, value)
-    double_buckets_size if ((length + 1.0) / @buckets.size) >= @load_factor
-
-    add_entry key, value
+    if has? key
+      update_entry(key, value)
+    else
+      double_buckets_size if ((length + 1.0) / @buckets.size) > @load_factor
+      add_entry(key, value)
+    end
     [key, value]
   end
 
@@ -30,7 +33,7 @@ class HashMap
   end
 
   def has?(key)
-    return true unless get(key).nil?
+    return true if keys.include? key
 
     false
   end
@@ -67,11 +70,7 @@ class HashMap
     @buckets.each_with_object([]) do |entry, array|
       next if entry.nil?
 
-      if entry.is_a? LinkedList
-        entry.each { |node| array << [node.key, node.value] }
-      else
-        array << entry
-      end
+      entry.is_a?(LinkedList) ? entry.each { |node| array << [node.key, node.value] } : array << entry
     end
   end
 
@@ -110,6 +109,11 @@ class HashMap
     end
 
     @length += 1
+  end
+
+  def update_entry(key, value)
+    bucket = @buckets[hash key]
+    bucket.is_a?(LinkedList) ? bucket.update_value(key, value) : bucket[1] = value
   end
 
   def add_to_buckets(index, entry)
